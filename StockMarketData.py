@@ -27,7 +27,7 @@ class StockMarketData:
     # End properties
 
     def LoadConfig(self):
-        with open('./config.json') as jsonfile:
+        with open('./config/Underlying.config') as jsonfile:
             config = json.load(jsonfile)
             self.UnderlyingNames = config['UnderlyginNames']
             self.__period = config['Period']

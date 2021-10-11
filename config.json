@@ -1,6 +1,0 @@
-{
-    "UnderlyginNames" : ["AAPL", "INTC"],
-    "Period" : "5d",
-    "Interval" : "5m",
-    "UpdateInterval": 2
-}
