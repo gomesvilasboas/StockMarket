@@ -2,3 +2,4 @@
 /log
 /Tests.ipynb
 /Utils.py
+*.pyc
