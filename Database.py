@@ -2,6 +2,8 @@ import pymongo
 import logging
 from threading import Lock
 import time
+import json
+import os
 
 class MongoDB:
 
@@ -10,13 +12,19 @@ class MongoDB:
     logger_lock = Lock()
 
     def __init__(self):
-        self.__URL = "mongodb://127.0.0.1"
-        self.__port = 27017
-        self.__databaseName = 'StockMarketData'
+        self.LoadConfig()
+    
+    def LoadConfig(self):
+        with open('./config/MongoDB.config') as jsonfile:
+            config = json.load(jsonfile)
+            self.__databaseName = config['DatabaseName']
+            self.__URI = config['URI']
+
     
     def Initalize(self):
-        URI = self.__URL + ':' + str(self.__port)
-        client = pymongo.MongoClient(URI)
+        user =  os.getenv('MongoDBUSer')
+        passwd = os.getenv('MongoDBPasswd')
+        client = pymongo.MongoClient(self.__URI, user = user, password = passwd)
         self.__database = client[self.__databaseName]
     
     def Insert(self, collection, data):

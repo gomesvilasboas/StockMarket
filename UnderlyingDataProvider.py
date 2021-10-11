@@ -32,6 +32,7 @@ class UnderlyingDataProvider:
     def DownloadUnderlyingHistory(self, underlyingName, lock):
         while(True):
             if self.Sign != 'off':
+                
                 msg = '[{underlyingName}][{timestamp}] Downloading underlying history'.format(underlyingName=self.__underlyingName, timestamp=time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime()))
                 with lock:
                     logging.info(msg)
@@ -58,5 +59,3 @@ class UnderlyingDataProvider:
         logger_lock = Lock()
         thread = threading.Thread(target=self.DownloadUnderlyingHistory, args=(self.__underlyingName, logger_lock,))
         thread.start()
-        msg = '[{timestamp}] UpdateUnderlyingHistory thread initiated for underlying {underlyingName}'.format(timestamp=time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime()), underlyingName=self.__underlyingName)
-        logging.info(msg)
