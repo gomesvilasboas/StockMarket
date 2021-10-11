@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - hargup/label/pypi
 
-dependecies:
+dependencies:
   - numpy
   - scipy
   - matplotlib
@@ -16,3 +16,4 @@ dependecies:
   - requests
   - pandas-datareader
   - yfinance
+  - pymongo
